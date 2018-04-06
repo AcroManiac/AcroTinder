@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path, re_path
+# from main.views import FacebookLogin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/v1/admin/', admin.site.urls),
+    path('api/v1/accounts/', include('allauth.urls')),
+
+    # re_path(r'^api/v1/rest-auth/facebook/$', FacebookLogin.as_view(), name='fb_login')
 ]
