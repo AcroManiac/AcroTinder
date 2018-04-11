@@ -12,11 +12,20 @@ class Profile(models.Model):
 	weight = models.FloatField(null=True, blank=True, default=None)
 	bio = models.CharField(max_length=500, blank=True, default=None)
 
-	# gender
-	# level
+	GENDER_CHOICES = (
+		('M', 'Male'),
+		('F', 'Female'),
+	)
+	gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
+
 	# level_description
-	# position (role)
 	# comfort_time
 
 class Sport(models.Model):
 	name = models.CharField(max_length=64, blank=False, default='Pair Sport')
+
+class Level(models.Model):
+	name = models.TextField(max_length=20, default='Beginner')
+
+class Position(models.Model):
+	name = models.TextField(max_length=20, default='Base')
